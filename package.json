@@ -1,0 +1,11 @@
+{
+  "name": "node-demo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/never-w/node-demo.git",
+  "author": "yinqiao <1737666820@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "formidable": "^2.0.1"
+  }
+}

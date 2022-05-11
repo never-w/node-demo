@@ -1,8 +1,8 @@
-const querystring = require("querystring")
 const fs = require("fs")
 const formidable = require("formidable")
 
-function start(res, req) {
+// start路由方法
+function start(res) {
   const body =
     "<html>" +
     "<head>" +
@@ -23,10 +23,12 @@ function start(res, req) {
   res.end()
 }
 
+// 上传图片方法
 function upload(res, req) {
   const form = formidable({})
+
   form.parse(req, (error, fields, files) => {
-    fs.renameSync(files.upload.path, "/tmp/test.png")
+    fs.renameSync(files.upload.filepath, "/tmp/test.png")
     res.writeHead(200, { "Content-Type": "text/html" })
     res.write("received image:<br/>")
     res.write("<img src='/show' />")
@@ -34,7 +36,8 @@ function upload(res, req) {
   })
 }
 
-function show(res, req) {
+// 展示图片方法
+function show(res) {
   fs.readFile("/tmp/test.png", "binary", (error, file) => {
     if (error) {
       res.writeHead(500, { "Content-Type": "text/plain" })
