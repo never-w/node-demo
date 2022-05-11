@@ -30,7 +30,7 @@ function upload(res, req) {
   form.parse(req, (error, fields, files) => {
     fs.renameSync(files.upload.filepath, "/tmp/test.png")
     res.writeHead(200, { "Content-Type": "text/html" })
-    res.write("received image:<br/>")
+    res.write("")
     res.write("<img src='/show' />")
     res.end()
   })
